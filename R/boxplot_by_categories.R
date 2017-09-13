@@ -9,6 +9,8 @@
 #' @param categorical The quoted name of the column with the categorical variable, i.e. the variables that divides the data in groups.
 #'
 #' @param id The quoted name name of the column with the individual variables, i.e. the observation.
+#' It is set as default to NULL for the cases where there is no column identifying
+#' the indioviduals in the data set.
 #'
 #' @return Boxplot of the quantitative variable for each group in the categorical variable.
 #' And also idintify the outlier, when they exist is the data.
@@ -20,23 +22,43 @@
 #' @import tidyverse
 #' @export
 
-boxplot_by_categories <- function(df,quantitative,categorical,id){
+boxplot_by_categories <- function(df,quantitative,categorical,id=NULL){
 
-  variable_names <- c(id,categorical,quantitative)
+  if(!is.null(id)){
+    variable_names <- c(id,categorical,quantitative)
 
-  sub_df <- df[,c(which(colnames(df)==variable_names[1]),which(colnames(df)==variable_names[2]),which(colnames(df)==variable_names[3]))]
-  colnames(sub_df) <- c("id","categorical","quantitative")
+    sub_df <- df[,c(which(colnames(df)==variable_names[1]),which(colnames(df)==variable_names[2]),which(colnames(df)==variable_names[3]))]
+    colnames(sub_df) <- c("id","categorical","quantitative")
 
 
-  is_outlier <- function(x) {
-    return(x < quantile(x, 0.25) - 1.5 * IQR(x) | x > quantile(x, 0.75) + 1.5 * IQR(x))
+    is_outlier <- function(x) {
+      return(x < quantile(x, 0.25) - 1.5 * IQR(x) | x > quantile(x, 0.75) + 1.5 * IQR(x))
+    }
+
+    sub_df %>%
+      group_by(categorical) %>%
+      mutate(outlier = ifelse(is_outlier(quantitative),id, as.numeric(NA))) %>%
+      ggplot(aes(x=categorical,y=quantitative))+
+      geom_boxplot(colour="darkblue",fill="lightblue")+
+      geom_text(aes(label=outlier),na.rm = T,hjust=-0.3, colour="red")+
+      xlab(variable_names[2])+ ylab(variable_names[3])
+  } else {
+    variable_names <- c(categorical,quantitative)
+
+    sub_df <- df[,c(which(colnames(df)==variable_names[1]),which(colnames(df)==variable_names[2]))]
+    colnames(sub_df) <- c("categorical","quantitative")
+
+
+    is_outlier <- function(x) {
+      return(x < quantile(x, 0.25) - 1.5 * IQR(x) | x > quantile(x, 0.75) + 1.5 * IQR(x))
+    }
+
+    sub_df %>%
+      group_by(categorical) %>%
+      mutate(outlier = ifelse(is_outlier(quantitative),quantitative, as.numeric(NA))) %>%
+      ggplot(aes(x=categorical,y=quantitative))+
+      geom_boxplot(colour="darkblue",fill="lightblue")+
+      geom_text(aes(label=outlier),na.rm = T,hjust=-0.3,colour="red")+
+      xlab(variable_names[1])+ ylab(variable_names[2])
   }
-
-  sub_df %>%
-    group_by(categorical) %>%
-    mutate(outlier = ifelse(is_outlier(quantitative),id, as.numeric(NA))) %>%
-    ggplot(aes(x=categorical,y=quantitative))+
-    geom_boxplot()+
-    geom_text(aes(label=outlier),na.rm = T,hjust=-0.3)+
-    xlab(variable_names[2])+ ylab(variable_names[1])
 }

@@ -4,7 +4,7 @@
 \alias{boxplot_by_categories}
 \title{boxplot_by_categories}
 \usage{
-boxplot_by_categories(df, quantitative, categorical, id)
+boxplot_by_categories(df, quantitative, categorical, id = NULL)
 }
 \arguments{
 \item{df}{A data frame.}
@@ -13,7 +13,9 @@ boxplot_by_categories(df, quantitative, categorical, id)
 
 \item{categorical}{The quoted name of the column with the categorical variable, i.e. the variables that divides the data in groups.}
 
-\item{id}{The quoted name name of the column with the individual variables, i.e. the observation.}
+\item{id}{The quoted name name of the column with the individual variables, i.e. the observation.
+It is set as default to NULL for the cases where there is no column identifying
+the indioviduals in the data set.}
 }
 \value{
 Boxplot of the quantitative variable for each group in the categorical variable.
