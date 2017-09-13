@@ -11,5 +11,5 @@ Description: Companion to Module MS4215 of University of Limerick. This package
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports: car
+Imports: car, tidyverse
 RoxygenNote: 6.0.1
