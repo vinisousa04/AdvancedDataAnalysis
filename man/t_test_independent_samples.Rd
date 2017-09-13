@@ -15,6 +15,11 @@ t_test_independent_samples(df, categorical, quantitative, confi = 0.95)
 
 \item{confi}{The confidence level choosen}
 }
+\value{
+A list with two elements. The first being the t test results and the
+second being Levene test result of equal variance, which has as null hypothesis
+that the variances between the groups are equal.
+}
 \description{
 Tests if the diference in the mean of a variable between two groups is statistically significant.
 }

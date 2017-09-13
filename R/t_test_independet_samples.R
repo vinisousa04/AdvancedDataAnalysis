@@ -6,6 +6,14 @@
 #' @param categorical The quoted column name of the column which contains the groups
 #' @param quantitative The quoted column name of the column which contains the variable to be tested
 #' @param confi The confidence level choosen
+#'
+#' @return A list with two elements. The first being the t test results and the
+#' second being Levene test result of equal variance, which has as null hypothesis
+#' that the variances between the groups are equal.
+#'
+#' @example
+#' t_test_independent(df=data, categorical="blood_type", quantitative="pressure",confi=0.99)
+#'
 #' @import car
 #' @export
 
