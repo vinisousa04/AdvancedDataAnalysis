@@ -7,10 +7,19 @@
 freq_table_with_percent(df, cat_variable)
 }
 \arguments{
-\item{df}{A data frame}
+\item{df}{A data frame.}
 
-\item{cat_variable}{The quoted column name that contains the categorical variable}
+\item{cat_variable}{The quoted column name that contains the categorical variable.}
+}
+\value{
+A table in which the rownames are the groups of the categorical
+ variable. The first column if the count of the respective group and the second
+ column is the percentage of the the group.
 }
 \description{
 Generates a frequency table with the percentage of each group.
+}
+\examples{
+freq_table_with_percent(df=data,cat_variable="eye_color")
+
 }

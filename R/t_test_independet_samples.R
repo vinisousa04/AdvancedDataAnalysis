@@ -11,7 +11,7 @@
 #' second being Levene test result of equal variance, which has as null hypothesis
 #' that the variances between the groups are equal.
 #'
-#' @example
+#' @examples
 #' t_test_independent(df=data, categorical="blood_type", quantitative="pressure",confi=0.99)
 #'
 #' @import car

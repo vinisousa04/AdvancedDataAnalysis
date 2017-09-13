@@ -23,3 +23,7 @@ that the variances between the groups are equal.
 \description{
 Tests if the diference in the mean of a variable between two groups is statistically significant.
 }
+\examples{
+t_test_independent(df=data, categorical="blood_type", quantitative="pressure",confi=0.99)
+
+}

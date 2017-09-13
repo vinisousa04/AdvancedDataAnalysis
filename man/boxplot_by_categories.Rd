@@ -7,7 +7,7 @@
 boxplot_by_categories(df, quantitative, categorical, id)
 }
 \arguments{
-\item{df}{A data frame}
+\item{df}{A data frame.}
 
 \item{quantitative}{The quoted name of the column with the quantitative variable.}
 
@@ -15,6 +15,14 @@ boxplot_by_categories(df, quantitative, categorical, id)
 
 \item{id}{The quoted name name of the column with the individual variables, i.e. the observation.}
 }
+\value{
+Boxplot of the quantitative variable for each group in the categorical variable.
+And also idintify the outlier, when they exist is the data.
+}
 \description{
 This is a wrapper for a ggplot2 boxplot for a variable with different groups, and also adds the labels for outliers in the presence of them.
+}
+\examples{
+boxplot_by_categories(df=data, quantitative="pressure", categorical="blood_type",id="patient_name")
+
 }

@@ -2,10 +2,20 @@
 #'
 #' This is a wrapper for a ggplot2 boxplot for a variable with different groups, and also adds the labels for outliers in the presence of them.
 #'
-#' @param df A data frame
+#' @param df A data frame.
+#'
 #' @param quantitative The quoted name of the column with the quantitative variable.
+#'
 #' @param categorical The quoted name of the column with the categorical variable, i.e. the variables that divides the data in groups.
+#'
 #' @param id The quoted name name of the column with the individual variables, i.e. the observation.
+#'
+#' @return Boxplot of the quantitative variable for each group in the categorical variable.
+#' And also idintify the outlier, when they exist is the data.
+#'
+#'
+#' @examples
+#' boxplot_by_categories(df=data, quantitative="pressure", categorical="blood_type",id="patient_name")
 #'
 #' @import tidyverse
 #' @export
