@@ -7,7 +7,7 @@ Maintainer: Vinicius M. de Sousa <sousavini04@hotmail.com>
 Description: Companion to Module MS4215 of University of Limerick. This package
               offers functions developed in order to help the implementation of 
               analysis teached in the Advanced Data Analysis Module during the
-              autumn semester at the University of Limerick
+              2017 autumn semester at the University of Limerick
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
