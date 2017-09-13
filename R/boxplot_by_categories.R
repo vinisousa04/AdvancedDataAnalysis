@@ -6,6 +6,8 @@
 #' @param quantitative The quoted name of the column with the quantitative variable.
 #' @param categorical The quoted name of the column with the categorical variable, i.e. the variables that divides the data in groups.
 #' @param id The quoted name name of the column with the individual variables, i.e. the observation.
+#'
+#' @import tidyverse
 #' @export
 
 boxplot_by_categories <- function(df,quantitative,categorical,id){

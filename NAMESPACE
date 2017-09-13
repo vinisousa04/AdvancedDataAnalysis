@@ -3,3 +3,4 @@
 export(boxplot_by_categories)
 export(freq_table_with_percent)
 export(t_test_independent_samples)
+import(tidyverse)
