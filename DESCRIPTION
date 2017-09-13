@@ -1,0 +1,13 @@
+Package: AdvancedDataAnalysis
+Type: Package
+Title: Package builded as a companion to the Advanced Data Analysis Module (MS4215) of the University of Limerick.
+Version: 0.1.0
+Author: Vinicius M. de Sousa
+Maintainer: Vinicius M. de Sousa <sousavini04@hotmail.com>
+Description: This package provides functions aimed to help the implementation of the analysis presentended in the
+              Advanced Data Analysis Module if the University of Limerick.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: car
+RoxygenNote: 6.0.1
