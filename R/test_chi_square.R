@@ -32,7 +32,7 @@ test_chi_square <- function(df,cat_1,cat_2){
   # Testing if all expected values are greater than 5
   if(!any(chi_sq_test$expected <= 5)){
     chi_sq_test$observed_proportion <- prop.table(chi_sq_test$observed)
-    chi_sq_test$observed_proportion <- as_tibble(round(v$observed_proportion*100,2)) %>%
+    chi_sq_test$observed_proportion <- as_tibble(round(chi_sq_test$observed_proportion*100,2)) %>%
       arrange(Pclass)
     names(attributes(chi_sq_test$observed_proportion)[[2]]) <- nomes
 
