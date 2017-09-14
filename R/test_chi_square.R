@@ -22,8 +22,8 @@
 test_chi_square <- function(df,cat_1,cat_2){
 
   nomes <- c(cat_1,cat_2)
-  category_1 <- df[,which(colnames(df)==cat_1)]
-  category_2 <- df[,which(colnames(df)==cat_2)]
+  category_1 <- unlist(df[,which(colnames(df)==cat_1)])
+  category_2 <- unlist(df[,which(colnames(df)==cat_2)])
 
   chi_sq_test <- chisq.test(category_1,category_2)
   names(attributes(chi_sq_test$observed)[[2]]) <- nomes
