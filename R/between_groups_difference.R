@@ -82,4 +82,3 @@ between_groups_difference <- function(df,categorical,quantitative,confi = 0.95){
   }
   return(Result = output)
 }
-
