@@ -29,7 +29,7 @@ boxplot_by_categories <- function(df,quantitative,categorical,id=NULL){
 
     sub_df <- df[,c(which(colnames(df)==variable_names[1]),which(colnames(df)==variable_names[2]),which(colnames(df)==variable_names[3]))]
     colnames(sub_df) <- c("id","categorical","quantitative")
-
+    sub_df[complete.cases(sub_df),]
 
     is_outlier <- function(x) {
       return(x < quantile(x, 0.25) - 1.5 * IQR(x) | x > quantile(x, 0.75) + 1.5 * IQR(x))
