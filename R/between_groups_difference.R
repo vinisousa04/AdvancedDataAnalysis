@@ -1,4 +1,4 @@
-#' between_groups_difference
+#' test_equality_between_groups
 #'
 #' Tests if the mean difference between two groups of a quantitative variable is
 #' statiscally significant. In order to do so, it is first teste if in both
@@ -22,11 +22,11 @@
 #' it is returned the normality and Wilcox test's results.
 #'
 #' @examples
-#' between_groups_difference(df=data, categorical="blood_type", quantitative="pressure",confi=0.99)
+#' test_equality_between_groups(df=data, categorical="blood_type", quantitative="pressure",confi=0.99)
 #'
 #' @export
 
-between_groups_difference <- function(df,categorical,quantitative,confi = 0.95){
+test_equality_between_groups <- function(df,categorical,quantitative,confi = 0.95){
 
   ####
   ## testing normality
