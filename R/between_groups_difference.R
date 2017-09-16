@@ -1,14 +1,15 @@
 #' test_equality_between_groups
 #'
 #' Tests if the mean difference between two groups of a quantitative variable is
-#' statiscally significant. In order to do so, it is first teste if in both
+#' statiscally significant. In order to do so, it first tests if in both
 #' groups the quantitative variable is normally distributed, if this is the case
-#' than a independent sample t test takes place - in this case it is also
-#' computed the Levene test for equal variance between groups. If the hypothesis
-#' of normallity is rejected - p.value <= 0.05 - for at least one of the groups,
-#' than the wilcoxon rank sum test takes place. NOTE: both tests - t test and
-#' wilcoxon rank sum test - have as null hypothesis that the groups do not differ
-#' in the variable of interest.
+#' then a independent sample t test takes place (in this case it is also
+#' computed the Levene test for equal variance between groups). If the hypothesis
+#' of normallity is rejected (p.value <= 1-confi) for at least one of the groups,
+#' then the wilcox rank sum test takes place. NOTE: both tests (t test and
+#' wilcox rank sum test) have as null hypothesis that the quantitative groups'
+#' mean do not differ between groups.
+#'
 #'
 #' @param df A data frame.
 #' @param categorical The quoted name of the column which contains the group
@@ -51,13 +52,13 @@ test_equality_between_groups <- function(df,categorical,quantitative,confi = 0.9
   for(category in categories){
 
 
-    tab_result[which(tab_result[,categorical]==category),-1] <- c(shap_test[[category]][["statistic"]],
-                                                                  length(by_categorical[[category]]),
-                                                                  shap_test[[category]][["p.value"]])
+    tab_result[which(tab_result[,"Group"]==category),-1] <- c(shap_test[[category]][["statistic"]],
+                                                              length(by_categorical[[category]]),
+                                                              shap_test[[category]][["p.value"]])
 
   }
 
-  if(!any(tab_result$p_value <= 0.05)){
+  if(!any(tab_result$p_value <= 1 - confi)){
     ####
     # t_test
 

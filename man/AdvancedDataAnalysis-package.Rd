@@ -8,7 +8,12 @@
 \description{
 \packageDescription{AdvancedDataAnalysis}
 }
+\details{
 
+The DESCRIPTION file:
+\packageDESCRIPTION{AdvancedDataAnalysis}
+\packageIndices{AdvancedDataAnalysis}
+}
 \author{
 \packageAuthor{AdvancedDataAnalysis}
 

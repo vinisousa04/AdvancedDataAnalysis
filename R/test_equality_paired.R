@@ -1,8 +1,8 @@
 #' test_equality_paired
 #'
-#' Tests if the mean difference of the same group in different situation, e.g.
-#' before and after a training, is statiscally different. In order to do so first
-#' it is tested if the differen between the situations, e.g.again the time before
+#' Tests if the mean difference of the same group in different situations, e.g.
+#' before and after a training, is statiscally significant In order to do so, first
+#' it is tested if the differen between the situations, e.g. again the time before
 #' the training and the time after the training is normally distibuted. If it is
 #' then a paired t test takes place, otherwise it is computed the Wilcoxon Signed-Rank
 #' Test.
@@ -19,7 +19,8 @@
 #' value is "two.sided", others options are "greater" and "less".
 #'
 #' @return A list containg the shapiro test of normality and the appropriate test of mean/median
-#' equality.
+#' equality. Note: If the appropriate test if the t test, then the result of levene
+#' test for equal variance is also returned.
 #'
 #' @examples
 #'
@@ -40,7 +41,7 @@ test_equality_paired <- function(df,time1,time2,confi = 0.95, alternative = "two
   ## testing difference normality
   test_shap <- shapiro.test(difference)
 
-  if(test_shap$p.value <= 0.05){
+  if(test_shap$p.value <= 1-confi){
     ####
     # Normality rejected
 
@@ -68,6 +69,7 @@ test_equality_paired <- function(df,time1,time2,confi = 0.95, alternative = "two
                      var.equal = equal_variance,
                      conf.level = confi)
     output <- list(result_shapiro = test_shap,
+                   result_leve = test_levene,
                    result_t_test = t_test)
   }
   return(output)

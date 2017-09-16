@@ -24,14 +24,14 @@ it is returned the normality and Wilcox test's results.
 }
 \description{
 Tests if the mean difference between two groups of a quantitative variable is
-statiscally significant. In order to do so, it is first teste if in both
+statiscally significant. In order to do so, it first tests if in both
 groups the quantitative variable is normally distributed, if this is the case
-than a independent sample t test takes place - in this case it is also
-computed the Levene test for equal variance between groups. If the hypothesis
-of normallity is rejected - p.value <= 0.05 - for at least one of the groups,
-than the wilcoxon rank sum test takes place. NOTE: both tests - t test and
-wilcoxon rank sum test - have as null hypothesis that the groups do not differ
-in the variable of interest.
+then a independent sample t test takes place (in this case it is also
+computed the Levene test for equal variance between groups). If the hypothesis
+of normallity is rejected (p.value <= 1-confi) for at least one of the groups,
+then the wilcox rank sum test takes place. NOTE: both tests (t test and
+wilcox rank sum test) have as null hypothesis that the quantitative groups'
+mean do not differ between groups.
 }
 \examples{
 test_equality_between_groups(df=data, categorical="blood_type", quantitative="pressure",confi=0.99)

@@ -1,19 +1,23 @@
 #'boxplot_by_categories
 #'
-#' This is a wrapper for a ggplot2 boxplot for a variable with different groups, and also adds the labels for outliers in the presence of them.
+#' This is a wrapper for a ggplot2 boxplot for a variable with different groups,
+#' and also adds the labels for outliers, if any.
 #'
 #' @param df A data frame.
 #'
-#' @param quantitative The quoted name of the column with the quantitative variable.
+#' @param quantitative The quoted name of the column with the quantitative
+#' variable.
 #'
-#' @param categorical The quoted name of the column with the categorical variable, i.e. the variables that divides the data in groups.
+#' @param categorical The quoted name of the column with the categorical
+#' variable, i.e. the variables that divides the data in groups.
 #'
-#' @param id The quoted name name of the column with the individual variables, i.e. the observation.
-#' It is set as default to NULL for the cases where there is no column identifying
-#' the indioviduals in the data set.
+#' @param id The quoted name name of the column with the individual variables,
+#' i.e. the observations. It is set as default to NULL for the cases where there
+#' is no column identifying the indioviduals in the data set.
 #'
-#' @return Boxplot of the quantitative variable for each group in the categorical variable.
-#' And also idintify the outlier, when they exist is the data.
+#' @return Boxplot of the quantitative variable for each group in the
+#' categorical variable. And also idintify the outlier, when they exist
+#' is the data.
 #'
 #'
 #' @examples
