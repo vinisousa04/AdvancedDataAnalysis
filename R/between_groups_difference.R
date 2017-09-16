@@ -31,7 +31,7 @@ test_equality_between_groups <- function(df,categorical,quantitative,confi = 0.9
   ####
   ## testing normality
 
-  categories <- unique(dados[,which(colnames(dados)==categorical)])
+  categories <- unique(df[,which(colnames(df)==categorical)])
 
   by_categorical <- vector(mode = "list",length = length(categories))
   names(by_categorical) <- categories
@@ -43,7 +43,7 @@ test_equality_between_groups <- function(df,categorical,quantitative,confi = 0.9
 
   for(category in categories){
     by_categorical[[category]] <- df[which(df[,categorical] == category),
-                                     which(colnames(dados)==quantitative)]
+                                     which(colnames(df)==quantitative)]
   }
 
   shap_test <- map(.x = by_categorical,.f = shapiro.test)
