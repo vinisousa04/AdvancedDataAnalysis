@@ -33,7 +33,8 @@ test_chi_square <- function(df,cat_1,cat_2){
   if(!any(chi_sq_test$expected <= 5)){
     chi_sq_test$observed_proportion <- prop.table(chi_sq_test$observed)
     chi_sq_test$observed_proportion <- as_tibble(round(chi_sq_test$observed_proportion*100,2)) %>%
-      arrange(Pclass)
+      arrange_(cat_1)
+    colnames(chi_sq_test$observed_proportion) <- c(cat_1,cat_2,"Percentage")
     names(attributes(chi_sq_test$observed_proportion)[[2]]) <- nomes
 
     output <- chi_sq_test
